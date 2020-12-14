@@ -1,0 +1,24 @@
+
+{
+  "display": "Node 14",
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es2020",
+    "module": "commonjs",
+    "lib": ["es2020"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./server",
+    "moduleResolution": "node"
+  },
+  "compileOnSave": true,
+  "exclude": [
+    "./src/client"
+  ],
+  "include": [
+    "./src/server"
+  ]
+}
