@@ -1,5 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
+import CreateTaskContainer from './component/CreateTaskContainer'
+
+// DBと繋げないため、とりあえずフロントでかちゃかちゃ動かすための初期データ
+const initialTaskData: ITodo[] = [
+  {
+    _id: 'task1',
+    name: 'Reactチュートリアルを学ぶ',
+    description: '最初はここからはじめると良いらしいと聞いた。React公式ページから。',
+    status: false
+  },{
+    _id: 'task2',
+    name: 'TypeScriptの基礎を学ぶ',
+    description: 'Qiitaで。公式がうまいこと日本語になってなかったから、とりあえず必要そうなところだけ。',
+    status: false    
+  }, {
+    _id: 'task3',
+    name: 'hookの概念を学ぶ',
+    description: 'React公式ページから学ぶ。とりあえず、stateかな。',
+    status: false
+  }
+];
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<ITodo[]>([])
@@ -51,6 +72,7 @@ const App: React.FC = () => {
           <li key={todo._id}>{todo.name}</li>
         ))}
       </ul>
+      <CreateTaskContainer />
     </main>
   )
 }
