@@ -1,6 +1,10 @@
 import React from 'react'
 
-const CreateTaskContainer: React.FC = () => {
+type CreateTaskContainerProps = {
+  createTaskBtnSubmit: (title: string, description: string) => void
+}
+
+const CreateTaskContainer: React.FC<CreateTaskContainerProps> = (props) => {
   return (
     <div className="p-createtask">
       <div className="p-createtask__ttl">

@@ -1,3 +1,4 @@
+import { stringify } from 'querystring';
 import React, { useEffect, useState } from 'react'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
 import CreateTaskContainer from './component/CreateTaskContainer'
@@ -64,6 +65,12 @@ const App: React.FC = () => {
     console.log('hello')
   }
 
+  const handleCreateTask = (title: string, description: string): void => {
+    console.log(title)
+    console.log(description)
+    return
+  }
+
   return (
     <main className='App'>
       <h1>タスク管理アプリ</h1>
@@ -72,7 +79,9 @@ const App: React.FC = () => {
           <li key={todo._id}>{todo.name}</li>
         ))}
       </ul>
-      <CreateTaskContainer />
+      <CreateTaskContainer
+        createTaskBtnSubmit={(title, description) => handleCreateTask(title, description)}
+      />
     </main>
   )
 }
