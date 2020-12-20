@@ -24,7 +24,13 @@ const initialTaskData: ITodo[] = [
 ];
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<ITodo[]>([])
+  const initialCount = initialTaskData.length
+
+  // タスク追加時に一意のIDを生成するためのカウンターを定義
+  const [count, setCount] = useState(initialCount)
+  const [todos, setTodos] = useState<ITodo[]>(initialTaskData)
+
+  /* ここからapiやりとり絡むので一旦無視 ------------------------------------- */
 
   const testData: ITodo = {
     _id: '1',
@@ -65,17 +71,22 @@ const App: React.FC = () => {
     console.log('hello')
   }
 
+  /* ここまで ---------------------------------------------------------- */
+
   const handleCreateTask = (title: string, description: string): void => {
-    const timestamp = Date();
-    // [note]本当はapi処理と絡む可能性あるが、ひとまずstate管理でidを振る処理する
+    const timestamp = Date()
+    const id = 'task' + count
     const createTaskData: ITodo = {
-      _id: 'efr',
+      _id: id,
       name: title,
       description: description,
       status: false,
       createdAt: timestamp
     }
     // [note]state整備したあと、ここで追加処理する
+
+    // countの更新
+    setCount(count + 1)
   }
 
   return (
