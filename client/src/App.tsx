@@ -66,9 +66,16 @@ const App: React.FC = () => {
   }
 
   const handleCreateTask = (title: string, description: string): void => {
-    console.log(title)
-    console.log(description)
-    return
+    const timestamp = Date();
+    // [note]本当はapi処理と絡む可能性あるが、ひとまずstate管理でidを振る処理する
+    const createTaskData: ITodo = {
+      _id: 'efr',
+      name: title,
+      description: description,
+      status: false,
+      createdAt: timestamp
+    }
+    // [note]state整備したあと、ここで追加処理する
   }
 
   return (
