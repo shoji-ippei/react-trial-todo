@@ -2,7 +2,7 @@ import { stringify } from 'querystring';
 import React, { useEffect, useState } from 'react'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
 import CreateTaskContainer from './component/CreateTaskContainer'
-import TaskLists from './component/TaskLists'
+import DisplayTodoLists from './component/DisplayTodoLists'
 
 // DBと繋げないため、とりあえずフロントでかちゃかちゃ動かすための初期データ
 const initialTaskData: ITodo[] = [
@@ -104,7 +104,7 @@ const App: React.FC = () => {
       <CreateTaskContainer
         createTaskBtnSubmit={(title, description) => handleCreateTask(title, description)}
       />
-      <TaskLists todos={todos} />
+      <DisplayTodoLists todos={todos} />
     </main>
   )
 }
