@@ -96,11 +96,11 @@ const App: React.FC = () => {
   return (
     <main className='App'>
       <h1>タスク管理アプリ</h1>
-      <ul>
+      {/* <ul>
         {todos.map((todo: ITodo) => (
           <li key={todo._id}>{todo.name}</li>
         ))}
-      </ul>
+      </ul> */}
       <CreateTaskContainer
         createTaskBtnSubmit={(title, description) => handleCreateTask(title, description)}
       />
