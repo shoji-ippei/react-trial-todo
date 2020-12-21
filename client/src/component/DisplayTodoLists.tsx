@@ -30,9 +30,9 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
       <tbody>
         {props.todos.map((todo: ITodo) => (
           <tr key={todo._id}>
-            <td>{todo._id}</td>
-            <td>{todo.name}</td>
-            <td>{todo.description}</td>
+            <td className={todo.status ? 'is_done' : ''}>{todo._id}</td>
+            <td className={todo.status ? 'is_done' : ''}>{todo.name}</td>
+            <td className={todo.status ? 'is_done' : ''}>{todo.description}</td>
             <td><input type="checkbox" data-id={todo._id} onChange={e => doneTodoCheck(e)} checked={todo.status} /></td>
           </tr>
         ))}
