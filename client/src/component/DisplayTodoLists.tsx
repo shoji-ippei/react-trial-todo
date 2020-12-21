@@ -9,7 +9,7 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
 
   const doneTodoCheck = (e: { target: HTMLInputElement; }): void => {
 
-    const id : string | undefined = e.target.dataset.id;
+    const id : string | undefined = e.target.dataset.id
     if (id === undefined) {
       return;
     }
@@ -18,7 +18,7 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
   }
 
   return (
-    <table>
+    <table className="p-tasklist">
       <thead>
         <tr>
           <th>No.</th>

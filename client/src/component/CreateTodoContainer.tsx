@@ -18,20 +18,22 @@ const CreateTaskContainer: React.FC<CreateTaskContainerProps> = (props) => {
     props.handleCreateTodo(title, description)
 
     // 入力画面のリセット
-    titleElement.value = '';
-    descriptionElement.value = '';
+    titleElement.value = ''
+    descriptionElement.value = ''
   }
 
   return (
     <div className="p-createtask">
       <div className="p-createtask__ttl">
-        <p>タスクの追加</p>
+        <p>タスクの追加をする</p>
       </div>
       <div className="p-createtask__form">
         <div className="p-createtask__form_item">
+          <p>名前</p>
           <input type="text" name="task-title" id="task-title" />
         </div>
         <div className="p-createtask__form_item">
+          <p>メモ</p>
           <textarea name="task-description" id="task-description"></textarea>
         </div>
         <div className="p-createtask__form_item">

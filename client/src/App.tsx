@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './style/main.scss';
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
 import CreateTodoContainer from './component/CreateTodoContainer'
 import DisplayTodoLists from './component/DisplayTodoLists'
