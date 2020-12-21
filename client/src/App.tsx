@@ -85,15 +85,26 @@ const App: React.FC = () => {
     }
 
     // タスクを追加
-    todos.push(newTodo);
-    setTodos(todos)
+    const todosCopy = todos.slice()
+    todosCopy.push(newTodo)
+    setTodos(todosCopy)
 
     // countの更新
     setCount(count + 1)
   }
 
   const handleDoneTodo = (_id: string):void => {
-    console.log(_id)
+    // 更新するindexを特定
+    const targetTodoIdx: number | undefined = todos.findIndex(todo => todo._id === _id)
+    if (targetTodoIdx === undefined) {
+      return
+    }
+
+    // タスクの更新
+    const todosCopy = todos.slice()
+    todosCopy[targetTodoIdx].status = !todosCopy[targetTodoIdx].status
+    setTodos(todosCopy)
+    console.log(todosCopy)
   }
 
   return (

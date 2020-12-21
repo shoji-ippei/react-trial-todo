@@ -7,11 +7,14 @@ type DisplayTodoListsProps = {
 
 const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
 
-  const doneTodoCheck = (): void => {
-    // チェックされたタスクidを取得
+  const doneTodoCheck = (e: { target: HTMLInputElement; }): void => {
 
-    // リフトアップ
-    props.handleDoneTodo('sampleid')
+    const id : string | undefined = e.target.dataset.id;
+    if (id === undefined) {
+      return;
+    }
+    
+    props.handleDoneTodo(id)
   }
 
   return (
@@ -30,7 +33,7 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
             <td>{todo._id}</td>
             <td>{todo.name}</td>
             <td>{todo.description}</td>
-            <td><input type="checkbox" data-key={todo._id} onChange={doneTodoCheck} /></td>
+            <td><input type="checkbox" data-id={todo._id} onChange={e => doneTodoCheck(e)} checked={todo.status} /></td>
           </tr>
         ))}
       </tbody>
