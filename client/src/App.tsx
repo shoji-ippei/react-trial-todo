@@ -93,6 +93,10 @@ const App: React.FC = () => {
     setCount(count + 1)
   }
 
+  const handleDoneTodo = (_id: string):void => {
+    console.log(_id)
+  }
+
   return (
     <main className='App'>
       <h1>タスク管理アプリ</h1>
@@ -104,7 +108,7 @@ const App: React.FC = () => {
       <CreateTaskContainer
         createTaskBtnSubmit={(title, description) => handleCreateTask(title, description)}
       />
-      <DisplayTodoLists todos={todos} />
+      <DisplayTodoLists todos={todos} handleDoneTodo={_id => handleDoneTodo(_id)} />
     </main>
   )
 }

@@ -1,10 +1,19 @@
 import React from 'react'
 
 type DisplayTodoListsProps = {
-  todos: ITodo[]
+  todos: ITodo[],
+  handleDoneTodo: (_id: string) => void
 }
 
 const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
+
+  const doneTodoCheck = (): void => {
+    // チェックされたタスクidを取得
+
+    // リフトアップ
+    props.handleDoneTodo('sampleid')
+  }
+
   return (
     <table>
       <thead>
@@ -21,7 +30,7 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
             <td>{todo._id}</td>
             <td>{todo.name}</td>
             <td>{todo.description}</td>
-            <td><input type="checkbox" data-key={todo._id} /></td>
+            <td><input type="checkbox" data-key={todo._id} onChange={doneTodoCheck} /></td>
           </tr>
         ))}
       </tbody>
