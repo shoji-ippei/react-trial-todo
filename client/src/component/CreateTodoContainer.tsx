@@ -1,12 +1,12 @@
 import React from 'react'
 
 type CreateTaskContainerProps = {
-  createTaskBtnSubmit: (title: string, description: string) => void
+  handleCreateTodo: (title: string, description: string) => void
 }
 
 const CreateTaskContainer: React.FC<CreateTaskContainerProps> = (props) => {
 
-  const createTaskBtnSubmit = (): void => {
+  const createTodoBtnSubmit = (): void => {
     
     // 入力値を取得
     const titleElement:HTMLInputElement = document.querySelector('#task-title') as HTMLInputElement
@@ -15,7 +15,7 @@ const CreateTaskContainer: React.FC<CreateTaskContainerProps> = (props) => {
     const description = descriptionElement.value
 
     // 親要素の関数呼び出し
-    props.createTaskBtnSubmit(title, description)
+    props.handleCreateTodo(title, description)
 
     // 入力画面のリセット
     titleElement.value = '';
@@ -35,7 +35,7 @@ const CreateTaskContainer: React.FC<CreateTaskContainerProps> = (props) => {
           <textarea name="task-description" id="task-description"></textarea>
         </div>
         <div className="p-createtask__form_item">
-          <button onClick={createTaskBtnSubmit}>タスクの追加</button>
+          <button onClick={createTodoBtnSubmit}>タスクの追加</button>
         </div>
       </div>
     </div>

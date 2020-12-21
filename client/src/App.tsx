@@ -1,7 +1,6 @@
-import { stringify } from 'querystring';
 import React, { useEffect, useState } from 'react'
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
-import CreateTaskContainer from './component/CreateTaskContainer'
+import CreateTodoContainer from './component/CreateTodoContainer'
 import DisplayTodoLists from './component/DisplayTodoLists'
 
 // DBと繋げないため、とりあえずフロントでかちゃかちゃ動かすための初期データ
@@ -74,7 +73,7 @@ const App: React.FC = () => {
 
   /* ここまで ---------------------------------------------------------- */
 
-  const handleCreateTask = (title: string, description: string): void => {
+  const handleCreateTodo = (title: string, description: string): void => {
     const timestamp = Date()
     const id = 'task' + count
     const newTodo: ITodo = {
@@ -105,8 +104,8 @@ const App: React.FC = () => {
           <li key={todo._id}>{todo.name}</li>
         ))}
       </ul> */}
-      <CreateTaskContainer
-        createTaskBtnSubmit={(title, description) => handleCreateTask(title, description)}
+      <CreateTodoContainer
+        handleCreateTodo={(title, description) => handleCreateTodo(title, description)}
       />
       <DisplayTodoLists todos={todos} handleDoneTodo={_id => handleDoneTodo(_id)} />
     </main>
