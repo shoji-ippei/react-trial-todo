@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { MouseEvent, ChangeEvent } from 'react'
 import UpdateTodoContainer from './UpdateTodoContainer'
 
 
@@ -10,19 +11,28 @@ type DisplayTodoListsProps = {
 const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
 
   const [updateTodo, setupdateTodo] = useState(props.todos[0])
+  const [updateDisplayFlug, setupdateDisplayFlug] = useState(false)
 
   const handleUpdateTodo = (todo: ITodo): void => {
     return;
   }
 
-  const doneTodoCheck = (e: { target: HTMLInputElement; }): void => {
+  const doneTodoCheck = (e: ChangeEvent<HTMLInputElement>): void => {
 
-    const id : string | undefined = e.target.dataset.id
+    const id : string | undefined = e.currentTarget.dataset.id
     if (id === undefined) {
       return;
     }
     
     props.handleDoneTodo(id)
+  }
+
+  const handleUpdateContainer = (e: MouseEvent<HTMLButtonElement>): void => {
+    setupdateDisplayFlug(true)
+    const id: string | undefined = e.currentTarget.dataset.id
+    const updateTargetTodo = props.todos.find((todo: ITodo) => todo._id === id)
+    if (updateTargetTodo === undefined) return
+    setupdateTodo(updateTargetTodo)
   }
 
   return (
@@ -33,21 +43,24 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
             <th>No.</th>
             <th>タスク名</th>
             <th>タスク詳細</th>
-            <th>おしまいチェック</th>
+            <th>その他</th>
           </tr>
         </thead>
         <tbody>
           {props.todos.map((todo: ITodo) => (
             <tr key={todo._id}>
-              <td className={todo.status ? 'is_done' : ''}>{todo._id}</td>
-              <td className={todo.status ? 'is_done' : ''}>{todo.name}</td>
-              <td className={todo.status ? 'is_done' : ''}>{todo.description}</td>
-              <td><input type="checkbox" data-id={todo._id} onChange={e => doneTodoCheck(e)} checked={todo.status} /></td>
+              <td width="5" className={todo.status ? 'is_done' : ''}>{todo._id}</td>
+              <td width="50" className={todo.status ? 'is_done' : ''}>{todo.name}</td>
+              <td width="150" className={todo.status ? 'is_done' : ''}>{todo.description}</td>
+              <td width="50">
+                <button data-id={todo._id} onClick={e => handleUpdateContainer(e)}>編集</button>
+                <input type="checkbox" data-id={todo._id} onChange={e => doneTodoCheck(e)} checked={todo.status} />
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <UpdateTodoContainer todo={updateTodo} handleUpdateTodo={todo => handleUpdateTodo(todo)} />
+      <UpdateTodoContainer flag={updateDisplayFlug} todo={updateTodo} handleUpdateTodo={todo => handleUpdateTodo(todo)} />
     </React.Fragment>
   )
 }

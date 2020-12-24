@@ -3,8 +3,11 @@ import React from 'react'
 type UpdateTodoContainerProps = {
   todo: ITodo
   handleUpdateTodo: (todo: ITodo) => void
+  flag: boolean
 }
 const UpdateTodoContainer: React.FC<UpdateTodoContainerProps> = (props) => {
+  if (!props.flag) return null
+  
   return (
     <div className="p-updatetask">
       <div className="p-updatetask__form">
