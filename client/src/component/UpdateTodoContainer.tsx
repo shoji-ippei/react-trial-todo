@@ -7,7 +7,7 @@ type UpdateTodoContainerProps = {
 }
 const UpdateTodoContainer: React.FC<UpdateTodoContainerProps> = (props) => {
   const [updateTodo, setupdateTodo] = useState(props.todo)
-  
+
   if (!props.flag) return null
 
   const changeUpdateTodo = (e: React.ChangeEvent<HTMLInputElement>, property: string): void => {
@@ -31,7 +31,7 @@ const UpdateTodoContainer: React.FC<UpdateTodoContainerProps> = (props) => {
           <input type="text" name="u-task-description" id="u-task-description" value={updateTodo.description} onChange={e => changeUpdateTodo(e, 'description')} />
         </div>
         <div className="p-updatetask__form_item">
-          <button>タスクの更新</button>
+          <button onClick={() => props.handleUpdateTodo(updateTodo)}>タスクの更新</button>
         </div>
       </div>
     </div>

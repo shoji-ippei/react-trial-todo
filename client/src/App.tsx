@@ -108,6 +108,17 @@ const App: React.FC = () => {
     console.log(todosCopy)
   }
 
+  const handleUpdateTodo = (targetTodo: ITodo): void => {
+    console.log(targetTodo)
+    // 更新するindexを特定
+    const targetTodoIdx: number = todos.findIndex(todo => todo._id === targetTodo._id)
+
+    // タスクの更新
+    const todosCopy = todos.slice()
+    todosCopy[targetTodoIdx] = Object.assign(todos[targetTodoIdx], targetTodo)
+    setTodos(todosCopy)
+  }
+
   return (
     <main className='App'>
       <h1>タスク管理アプリ</h1>
@@ -119,7 +130,7 @@ const App: React.FC = () => {
       <CreateTodoContainer
         handleCreateTodo={(title, description) => handleCreateTodo(title, description)}
       />
-      <DisplayTodoLists todos={todos} handleDoneTodo={_id => handleDoneTodo(_id)} />
+      <DisplayTodoLists todos={todos} handleDoneTodo={_id => handleDoneTodo(_id)} handleUpdateTodo={handleUpdateTodo} />
     </main>
   )
 }

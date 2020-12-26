@@ -5,7 +5,8 @@ import UpdateTodoContainer from './UpdateTodoContainer'
 
 type DisplayTodoListsProps = {
   todos: ITodo[],
-  handleDoneTodo: (_id: string) => void
+  handleDoneTodo: (_id: string) => void,
+  handleUpdateTodo: (todo: ITodo) => void
 }
 
 const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
@@ -14,7 +15,7 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
   const [updateDisplayFlug, setupdateDisplayFlug] = useState(false)
 
   const handleUpdateTodo = (todo: ITodo): void => {
-    return;
+    props.handleUpdateTodo(todo)
   }
 
   const doneTodoCheck = (e: ChangeEvent<HTMLInputElement>): void => {
