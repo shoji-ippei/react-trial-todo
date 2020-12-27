@@ -7,6 +7,8 @@ type CreateTaskContainerProps = {
 const CreateTaskContainer: React.FC<CreateTaskContainerProps> = (props) => {
 
   const createTodoBtnSubmit = (): void => {
+
+    let isCreateTodoFlug = false
     
     // 入力値を取得
     const titleElement:HTMLInputElement = document.querySelector('#task-title') as HTMLInputElement
@@ -14,12 +16,18 @@ const CreateTaskContainer: React.FC<CreateTaskContainerProps> = (props) => {
     const descriptionElement:HTMLInputElement = document.querySelector('#task-description') as HTMLInputElement
     const description = descriptionElement.value
 
-    // 親要素の関数呼び出し
-    props.handleCreateTodo(title, description)
+    if (title && description) {
+      isCreateTodoFlug = true
+    }
 
-    // 入力画面のリセット
-    titleElement.value = ''
-    descriptionElement.value = ''
+    if (isCreateTodoFlug) {
+      // 親要素の関数呼び出し
+      props.handleCreateTodo(title, description)
+
+      // 入力画面のリセット
+      titleElement.value = ''
+      descriptionElement.value = ''
+    }
   }
 
   return (
