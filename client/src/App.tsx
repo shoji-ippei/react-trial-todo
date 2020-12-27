@@ -109,7 +109,6 @@ const App: React.FC = () => {
   }
 
   const handleUpdateTodo = (targetTodo: ITodo): void => {
-    console.log(targetTodo)
     // 更新するindexを特定
     const targetTodoIdx: number = todos.findIndex(todo => todo._id === targetTodo._id)
 

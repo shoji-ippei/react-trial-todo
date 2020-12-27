@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 type UpdateTodoContainerProps = {
   todo: ITodo
@@ -6,32 +6,34 @@ type UpdateTodoContainerProps = {
   flag: boolean
 }
 const UpdateTodoContainer: React.FC<UpdateTodoContainerProps> = (props) => {
-  const [updateTodo, setupdateTodo] = useState(props.todo)
-
   if (!props.flag) return null
 
   const changeUpdateTodo = (e: React.ChangeEvent<HTMLInputElement>, property: string): void => {
     const value = e.target.value
-    const copyUpdateTodo = { ...updateTodo }
+    const newUpdateTodo = { ...props.todo }
     if (property === 'name') {
-      copyUpdateTodo.name = value
+      newUpdateTodo.name = value
     } else {
-      copyUpdateTodo.description = value
+      newUpdateTodo.description = value
     }
-    setupdateTodo(copyUpdateTodo)
+    props.handleUpdateTodo(newUpdateTodo)
+  }
+
+  const endUpdateTodo = (): void => {
+
   }
   
   return (
     <div className="p-updatetask">
       <div className="p-updatetask__form">
         <div className="p-updatetask__form_item">
-          <input type="text" name="u-task-title" id="u-task-title" value={updateTodo.name} onChange={e => changeUpdateTodo(e, 'name')} />
+          <input type="text" name="u-task-title" id="u-task-title" value={props.todo.name} onChange={e => changeUpdateTodo(e, 'name')} />
         </div>
         <div className="p-updatetask__form_item">
-          <input type="text" name="u-task-description" id="u-task-description" value={updateTodo.description} onChange={e => changeUpdateTodo(e, 'description')} />
+          <input type="text" name="u-task-description" id="u-task-description" value={props.todo.description} onChange={e => changeUpdateTodo(e, 'description')} />
         </div>
         <div className="p-updatetask__form_item">
-          <button onClick={() => props.handleUpdateTodo(updateTodo)}>タスクの更新</button>
+          <button onClick={() => endUpdateTodo}>タスクの更新</button>
         </div>
       </div>
     </div>

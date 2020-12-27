@@ -29,11 +29,12 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
   }
 
   const handleUpdateContainer = (e: MouseEvent<HTMLButtonElement>): void => {
-    setupdateDisplayFlug(true)
     const id: string | undefined = e.currentTarget.dataset.id
     const updateTargetTodo = props.todos.find((todo: ITodo) => todo._id === id)
     if (updateTargetTodo === undefined) return
     setupdateTodo(updateTargetTodo)
+    // console.log(updateTodo)
+    setupdateDisplayFlug(true)
   }
 
   return (
