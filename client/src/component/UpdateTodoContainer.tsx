@@ -4,6 +4,7 @@ type UpdateTodoContainerProps = {
   todo: ITodo
   handleUpdateTodo: (todo: ITodo) => void
   flag: boolean
+  handleChangeFlag: (flag: boolean) => void
 }
 const UpdateTodoContainer: React.FC<UpdateTodoContainerProps> = (props) => {
   if (!props.flag) return null
@@ -20,7 +21,7 @@ const UpdateTodoContainer: React.FC<UpdateTodoContainerProps> = (props) => {
   }
 
   const endUpdateTodo = (): void => {
-
+    props.handleChangeFlag(false)
   }
   
   return (
@@ -33,7 +34,7 @@ const UpdateTodoContainer: React.FC<UpdateTodoContainerProps> = (props) => {
           <input type="text" name="u-task-description" id="u-task-description" value={props.todo.description} onChange={e => changeUpdateTodo(e, 'description')} />
         </div>
         <div className="p-updatetask__form_item">
-          <button onClick={() => endUpdateTodo}>タスクの更新</button>
+          <button onClick={endUpdateTodo}>タスクの更新</button>
         </div>
       </div>
     </div>

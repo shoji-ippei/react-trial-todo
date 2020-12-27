@@ -33,8 +33,11 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
     const updateTargetTodo = props.todos.find((todo: ITodo) => todo._id === id)
     if (updateTargetTodo === undefined) return
     setupdateTodo(updateTargetTodo)
-    // console.log(updateTodo)
     setupdateDisplayFlug(true)
+  }
+
+  const handleChangeFlag = (isDisplayUpdateContainerFlug: boolean) => {
+    setupdateDisplayFlug(isDisplayUpdateContainerFlug)
   }
 
   return (
@@ -62,7 +65,11 @@ const DisplayTodoLists: React.FC<DisplayTodoListsProps> = (props) => {
           ))}
         </tbody>
       </table>
-      <UpdateTodoContainer flag={updateDisplayFlug} todo={updateTodo} handleUpdateTodo={todo => handleUpdateTodo(todo)} />
+      <UpdateTodoContainer 
+        flag={updateDisplayFlug}
+        todo={updateTodo}
+        handleUpdateTodo={todo => handleUpdateTodo(todo)} 
+        handleChangeFlag={isDisplayUpdateContainerFlug => handleChangeFlag(isDisplayUpdateContainerFlug)}/>
     </React.Fragment>
   )
 }
