@@ -1,0 +1,110 @@
+@import 'reset.scss';
+
+$c_main : #333333;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+	color: $c_main;
+	background-color: #FFFFFF;
+  font-size: 1.5em;
+	line-height: 1.8;
+	-webkit-text-size-adjust: 100%;
+}
+
+
+.App {
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  h1 {
+    text-align: center;
+    font-size: 2.6rem;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.p-createtask {
+  padding: 20px;
+  max-width: 300px;
+  width: 100%;
+  border: 1px solid $c_main;
+  &__ttl {
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid $c_main;
+    p {
+      font-size: 1.8rem;
+    }
+  }
+  &__form {
+    &_item {
+      padding-bottom: 15px;
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+input, textarea {
+  border: $c_main solid 1px;
+  padding: 2px 10px;
+  width: 100%;
+}
+
+button {
+  background-color: $c_main;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  padding: 5px 0;
+}
+
+.p-tasklist {
+  width: calc(100% - 330px);
+  margin-left: 30px;
+  border: 1px solid $c_main;
+  border-collapse: collapse;
+  tr {
+    th, td {
+      border: 1px solid $c_main;      
+      padding: 5px;
+    }
+    th {
+      text-align: center;
+      line-height: 1.5;
+    }
+    td {
+      &.is_done {
+        text-decoration-line: line-through;
+      }
+    }
+  }
+}
+
+// <div className="p-createtask">
+// <div className="p-createtask__ttl">
+//   <p>タスクの追加</p>
+// </div>
+// <div className="p-createtask__form">
+//   <div className="p-createtask__form_item">
+//     <input type="text" name="task-title" id="task-title" />
+//   </div>
+//   <div className="p-createtask__form_item">
+//     <textarea name="task-description" id="task-description"></textarea>
+//   </div>
+//   <div className="p-createtask__form_item">
+//     <button onClick={createTodoBtnSubmit}>タスクの追加</button>
+//   </div>
+// </div>
+// </div>
